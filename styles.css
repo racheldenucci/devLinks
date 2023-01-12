@@ -1,4 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;     /*tamanho da caixa é calculado pelo width, independente de padding*/
+}
+
 body{
     background: url(images/mobile-darkmode.jpg) no-repeat top center/cover;
     
+}
+
+body *{
+    font-family: "Inter", sans-serif;
+    color: white;
+}
+
+.container{
+    width: 360px;
+    margin: auto;
+    padding-top: 56px;
+
+    /*border: 1px solid cyan;*/
+}
+
+.profile{
+    text-align: center;
+    padding: 24px;
+
+    /*border: 1px solid plum;*/
+}
+
+.profile img{
+    width: 112px;
+    margin: auto;
+
+    border-radius: 50%;
+    border: 2px solid gray;
+    display: block;     /*centralize element with margin: auto*/
+}
+
+.profile p{
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;      /*gap só funciona com flexbox*/
+
+    /*border: 1px solid lawngreen;*/
+}
+
+a{
+    display: flex;      /*a ocupa todo o espaço da caixa li*/
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);     /*safari*/
+
+    text-decoration: none;
+    font-weight: 500;
+
+    transition: background .2s;    /*transição mais suave p estado de hover// transition: propriedade tempo*/
+}
+
+a:hover{
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid white;
 }
