@@ -4,14 +4,35 @@
     box-sizing: border-box;     /*tamanho da caixa é calculado pelo width, independente de padding*/
 }
 
+:root{
+    --txt-color: white;     /*variavel txt-color = white*/
+    --bg-url: url(images/mobile-darkmode.jpg);
+    --border-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba(255, 255, 255, 0.2);
+    --social-hover: rgba(255, 255, 255, 0.1);
+
+    --toggle-img: url(./images/moon.svg);
+}
+
+.light{
+    --txt-color: black;
+    --bg-url: url(images/mobile-lightmode.jpg);
+    --border-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --social-hover: rgba(0, 0, 0, 0.1);
+
+    --toggle-img: url(./images/sun.svg);
+}
+
 body{
-    background: url(images/mobile-darkmode.jpg) no-repeat top center/cover;
-    
+    background: var(--bg-url) no-repeat top center/cover;
 }
 
 body *{
     font-family: "Inter", sans-serif;
-    color: white;
+    color: var(--txt-color);
 }
 
 .container{
@@ -44,11 +65,51 @@ body *{
     margin-top: 8px;
 }
 
+.toggle{
+    position: relative;     /*conter o button para posicionamento com position absolute*/
+    width: 64px;
+
+    margin: 4px auto;
+}
+
+.toggle button{
+    width: 32px;
+    height: 32px;
+    background: white var(--toggle-img) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+
+    position: absolute;     
+    z-index: 1;     /*posicionamento nas camadas*/
+    transform: translateY(-50%);    /*alinhar button com span*/
+    top: 50%;
+}
+
+.light .toggle button{
+    right: 0;
+}
+
+.toggle span{
+    display: block;
+
+    width: 64px;
+    height: 24px;
+
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border-radius: 9999px;
+}
+
 ul{
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 16px;      /*gap só funciona com flexbox*/
+
+    padding: 24px 0;
 
     /*border: 1px solid lawngreen;*/
 }
@@ -59,9 +120,9 @@ ul a{
     align-items: center;
 
     padding: 16px 24px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--surface-color);
 
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
 
     backdrop-filter: blur(4px);
@@ -71,12 +132,13 @@ ul a{
     font-weight: 500;
 
     transition: background .2s;    /*transição mais suave p estado de hover// transition: propriedade tempo*/
+    transition: border .1s;
 }
 
 ul a:hover{
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--surface-color-hover);
 
-    border: 1px solid white;
+    border: 1.5px solid var(--txt-color);
 }
 
 .social{
@@ -99,12 +161,12 @@ ul a:hover{
 }
 
 .social ion-icon:hover{
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--social-hover);
 }
 
 footer{
-    padding: 24px;
+    padding: 24px 0;
 
-    display: flex;
-    
+    text-align: center;
+    font-size: 14px;
 }
