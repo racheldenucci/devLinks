@@ -28,6 +28,7 @@
 
 body{
     background: var(--bg-url) no-repeat top center/cover;
+    height: 100vh;
 }
 
 body *{
@@ -36,7 +37,8 @@ body *{
 }
 
 .container{
-    width: 360px;
+    width: 100%;
+    max-width: 588px;
     margin: auto;
     margin: 56px auto 0px;
     padding: 0 24px;
@@ -83,10 +85,19 @@ body *{
     z-index: 1;     /*posicionamento nas camadas*/
     transform: translateY(-50%);    /*alinhar button com span*/
     top: 50%;
+
+    animation: slide-left .2s;
+
+    transition: outline .1s;
 }
 
 .light .toggle button{
-    right: 0;
+    animation: slide-right .2s forwards;    /*animation: nome da keyframe tempo propriedade (forwards:manter posição final da animação)*/
+    transition: outline .1s;
+}
+
+.toggle button:hover{
+    outline: 8px solid var(--social-hover);
 }
 
 .toggle span{
@@ -169,4 +180,31 @@ footer{
 
     text-align: center;
     font-size: 14px;
+}
+
+@media(min-width: 700px) {  /*a partir de 700px serão aplicadas essas condições*/
+    :root{
+        --bg-url: url(./images/bg-desktop-dark.jpg)
+    }
+    .light{
+        --bg-url: url(./images/bg-desktop-light.jpg)
+    }
+}
+
+@keyframes slide-right{
+    from{
+        left: 0;
+    }
+    to{
+        left: 50%;
+    }
+}
+
+@keyframes slide-left{
+    from{
+        left: 50%;
+    }
+    to{
+        left: 0;
+    }
 }
